@@ -1,7 +1,7 @@
 office_service
 ==============
 
-Office Service is a server for dealing with Microsoft Office Word Files via a HTTP interface. Currently, it's able to convert a Word file to PDF and clean up personal information from Word file metadata. It's use Microsoft Office COM API to access to an Word Application instance and do actions over the documents programmatically.
+Office Service is a server for dealing with Microsoft Office Word Files via a HTTP interface. Currently, it's able to convert a Word file to PDF and clean up personal information from Word file metadata. It use Microsoft Office COM API to access to an Word Application instance and do actions over the documents programmatically.
 
 Motivation
 ------------
