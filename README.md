@@ -23,7 +23,9 @@ How it works
 
 ### HTTP Interface
 There are two URL:
- * /to/pdf: It receives a word file (.doc or .docx) via POST method packaged as form input and send as response a PDF file.
- * /cleanup/word: It receives a word file (.doc or .docx) via POST method packaged as form input and send as response another word file without personal information (but identical to the first one)
+###### /to/pdf 
+It receives a word file (.doc or .docx) via POST method packaged as form input and send as response a PDF file.
+###### /cleanup/word
+It receives a word file (.doc or .docx) via POST method packaged as form input and send as response another word file without personal information (but identical to the first one)
 
 ### Work Queue
