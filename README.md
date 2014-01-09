@@ -24,9 +24,9 @@ How it works
 ### HTTP Interface
 There are two URL:
 ###### /to/pdf 
-It receives a word file (.doc or .docx) via POST method packaged as form input and send as response a PDF file.
+It receives a word file (.doc or .docx) via POST method packaged as form input and send as response a PDF file. Example: convert.html
 ###### /cleanup/word
-It receives a word file (.doc or .docx) via POST method packaged as form input and send as response another word file without personal information (but identical to the first one)
+It receives a word file (.doc or .docx) via POST method packaged as form input and send as response another word file without personal information (but identical to the first one). Example: cleanup.html
 
 ### Work Queue
 Microsoft Office attends one request at a time. It was necessary to create a queue to deliver one work at a time to the Word instance. Under demand, the Word instance is kept alive and serves each request that it receive (get best performance). When the queue is empty the Word instance is destroyed for cleaning (get best stability)
