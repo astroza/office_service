@@ -28,7 +28,7 @@ It receives a word file (.doc or .docx) via POST method and send a PDF file as r
 ###### /cleanup/word
 It receives a word file (.doc or .docx) via POST method send another word file without personal information (but identical to the first one). Example: cleanup.html
 
-Before deliver the response to client, the work is sent to the Work Queue to process the request using Microsoft Word.
+Before deliver the response to client, the work is sent to the Work Queue to process the request upon Microsoft Word.
 
 ### Work Queue
 Microsoft Word attends one request at a time. It was necessary to create a queue to deliver one work at a time to the Word instance. Under demand, the Word instance is kept alive and serves each request that it receive (get best performance). When the queue is empty the Word instance is destroyed for cleaning (get best stability)
