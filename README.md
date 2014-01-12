@@ -31,4 +31,4 @@ It receives a word file (.doc or .docx) via POST method send another word file w
 Before deliver the response to client, the work is sent to the Work Queue to process the request upon Microsoft Word.
 
 ### Work Queue
-Microsoft Word attends one request at a time. It was necessary to create a queue to deliver one work at a time. Under demand, the Word instance is kept alive and serves each request that it receive (get best performance). When the queue is empty the Word instance is destroyed for cleaning (get best stability)
+Microsoft Word attends one request at a time. It was necessary to create a queue to deliver one work at a time. Under demand, the Word instance is kept alive and serves each request enqueued (get best performance). When the queue is empty the Word instance is destroyed for cleaning (get best stability)
