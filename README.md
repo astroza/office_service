@@ -24,9 +24,9 @@ How it works
 ### HTTP Interface
 There are two URL:
 ###### /to/pdf 
-It receives a word file (.doc or .docx) via POST method packaged as form input and send as response a PDF file. Example: convert.html
+It receives a word file (.doc or .docx) via POST method and send a PDF file as response. Example: convert.html
 ###### /cleanup/word
-It receives a word file (.doc or .docx) via POST method packaged as form input and send as response another word file without personal information (but identical to the first one). Example: cleanup.html
+It receives a word file (.doc or .docx) via POST method send another word file without personal information (but identical to the first one). Example: cleanup.html
 
 Before deliver the response to client, the work is sent to the Work Queue to process the request using Microsoft Word.
 
