@@ -7,7 +7,7 @@ import pythoncom
 import md5
 import time
 import threading
-from bottle import route, run, request, static_file, Bottle
+from bottle import route, run, request, static_file, Bottle, HTTPError
 
 app = Bottle()
 UPLOAD_PATH = os.getcwd()+'\\uploads'
@@ -82,8 +82,6 @@ class WorkQueueThread(threading.Thread):
 				print "\nWorkQueueThread: Invalid service_type(=%d)\n" % (item.service_type)
 			item.lock.release()
 
-worker_thread = WorkQueueThread()
-
 class WorkQueueItem:
 	def __init__(self, path, word_filename, orig_filename, filename_ext, service_type):
 		self.word_file_path = path
@@ -101,7 +99,7 @@ def save_word_file():
 	upload = request.files.get('upload')
 	name, ext = os.path.splitext(upload.filename)
 	if ext not in ('.doc','.docx'):
-		return "Solo archivos MS Word son permitidos: " + ext
+		raise HTTPError(404, "Solo archivos MS Word son permitidos: " + ext)
 	name_hash = md5.md5(name+str(time.time())).hexdigest()
 	save_file = open(UPLOAD_PATH+'\\'+name_hash+ext, "wb")
 	save_file.write(upload.file.read())
@@ -126,7 +124,12 @@ def cleanup_word():
 	GCFile(word_file_path)
 	return static_file(word_filename, root=UPLOAD_PATH, download=orig_word_filename+ext)
 
-gc=threading.Thread(target=gc_thread)
-gc.start()
-worker_thread.start()
-run(app, server='paste', host='0.0.0.0', port=8080)
+def main():
+	worker_thread = WorkQueueThread()
+	gc=threading.Thread(target=gc_thread)
+	gc.start()
+	worker_thread.start()
+	run(app, server='paste', host='0.0.0.0', port=8080)
+
+if __name__ == "__main__":
+	main()
